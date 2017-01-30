@@ -1,0 +1,19 @@
+version: '2.1'
+services:
+  as1:
+    image: aerospike/aerospike-server:3.11.0.2
+    networks:
+      - asnet
+    volumes:
+      - $PWD/etc-aero1:/etc/aerospike
+
+  as2:
+    image: aerospike/aerospike-server:3.11.0.2
+    networks:
+      - asnet
+    volumes:
+      - $PWD/etc-aero2:/etc/aerospike
+
+networks:
+  asnet:
+    driver: bridge
