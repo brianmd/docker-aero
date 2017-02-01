@@ -23,4 +23,12 @@ $ docker network inspect aero_asnet
 Lastly, the timeout is 1 second. I had a timeout issue with a really slow computer I own.
 Typing 'set timeout 3000' in aql prior to the select statement overcame this error.
 
+UPDATE: the timeout issue had to do with transparent huge pages. This is a known issue
+with database-type applications on newer builds of Linux. Run this command to solve:
+```sh
+echo never > /sys/kernel/mm/transparent_hugepage/enabled
+```
+
+(Better yet, put in your rc.local file so it is set upon boot.)
+
 
